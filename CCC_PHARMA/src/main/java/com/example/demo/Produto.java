@@ -9,7 +9,7 @@ public class Produto {
 	private String fabricante;
 	private Situacao situacao;
 	private Categoria categoria;
-	private float preco;
+	private Double preco;
 	private Date validade;
 	private String lote;
 	private int qntd;
@@ -25,7 +25,7 @@ public class Produto {
 	}
 	
 	public Produto(String nome, String codDeBarras, String fabricante,
-			Situacao situacao, Categoria categoria, float preco, int validadeDia,
+			Situacao situacao, Categoria categoria, Double preco, int validadeDia,
 			int validadeMes, int validadeAno, int qntd) {
 		this.nome = nome;
 		this.codDeBarras = codDeBarras;
@@ -47,7 +47,7 @@ public class Produto {
 		return this.categoria;
 	}
 	
-	public void setPreco(float preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 	
@@ -72,7 +72,7 @@ public class Produto {
 		return this.nome;
 	}
 	
-	public float getPreco() {
+	public Double getPreco() {
 		return this.preco;
 	}
 	

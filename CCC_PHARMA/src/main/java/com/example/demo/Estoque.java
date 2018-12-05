@@ -1,73 +1,111 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Estoque {
-	Map<String, Produto> produtos;
-	Map<String, Produto> produtosEmFalta;
-	Map<String, Produto> produtosVencidos;
-	
+	ArrayList<Produto> produtos;
+	ArrayList<Produto> produtosEmFalta;
+	ArrayList<Produto> produtosVencidos;
+
 	public Estoque() {
-		produtos = new HashMap<>();
-		produtosEmFalta = new HashMap<>();
-		produtosVencidos = new HashMap<>();
+		produtos = new ArrayList<>();
+		produtosEmFalta = new ArrayList<>();
+		produtosVencidos = new ArrayList<>();
 	}
-	
+
 	public void addProduto(Produto produto) {
-		produtos.put(produto.getNome(), produto);
+		produtos.add(produto);
 	}
-	
+
 	public String consultaDisponibilidadeEPreco(String nomeProduto, String lote) {
-		if(qntdProdutosIgualZero(nomeProduto) || loteEstaVencido(lote)) {
+
+		if (qntdProdutosIgualZero(nomeProduto) || loteEstaVencido(lote)) {
 			marcarProdutoComoIndispisponivel(nomeProduto);
 			return "Produto Indisponivel";
+		} else {
+			String retorno = "";
+			for (int i = 0; i < this.produtos.size(); i++) {
+				if (this.produtos.get(i).getNome().equals(nomeProduto)) {
+					String nome = this.produtos.get(i).getNome();
+					Double preco = this.produtos.get(i).getPreco();
+					int qntd = this.produtos.get(i).getQntd();
+
+					retorno = nome + " - " + preco + " - " + qntd;
+				}
+			}
+
+			return retorno;
 		}
-		else {
-			String nome = this.produtos.get(nomeProduto).getNome();
-			float preco = this.produtos.get(nomeProduto).getPreco();
-			int qntd = this.produtos.get(nomeProduto).getQntd();
-			
-			return nome + " - " + preco + " - " + qntd;
-		}
-		
-		
+
 	}
-	
+
 	public boolean loteEstaVencido(String lote) {
 		boolean result = false;
 		String dataAtual = new Date(System.currentTimeMillis()).toString();
-		for(Produto produto : this.produtos.values()) {
-			if(produto.getLote().equals(lote) && 
-					produto.getValidade().compareTo(dataAtual) < 0) {
+		for (int i = 0; i < produtos.size(); i++) {
+			if (produtos.get(i).getLote().equals(lote) && produtos.get(i).getValidade().compareTo(dataAtual) < 0) {
 				result = true;
 				return result;
 			}
 		}
 		return result;
 	}
-	
+
 	public boolean qntdProdutosIgualZero(String nomeProduto) {
-		if(this.produtos.get(nomeProduto).getQntd() == 0) {
-			return true;
+		for (int i = 0; i < this.produtos.size(); i++) {
+			if (this.produtos.get(i).getNome().equals(nomeProduto)) {
+				if (this.produtos.get(i).getQntd() == 0) {
+					return true;
+
+				}
+			}
 		}
-		else {
-			return false;
+		return false;
+	}
+
+	public void atribuirPreco(String nomeProduto, Double preco) {
+		for (int i = 0; i < this.produtos.size(); i++) {
+			if (this.produtos.get(i).getNome().equals(nomeProduto)) {
+				this.produtos.get(i).setPreco(preco);
+			}
 		}
 	}
-	
-	public void atribuirPreco(String nomeProduto, float preco) {
-		this.produtos.get(nomeProduto).setPreco(preco);
-	}
-	
+
 	public void marcarProdutoComoIndispisponivel(String nomeProduto) {
-		this.produtos.get(nomeProduto).setSituacao(Situacao.NAO_DISPONIVEL);
+		for (int i = 0; i < this.produtos.size(); i++) {
+			if (this.produtos.get(i).getNome().equals(nomeProduto)) {
+				this.produtos.get(i).setSituacao(Situacao.NAO_DISPONIVEL);
+			}
+		}
+
 	}
-	
+
 	public int qntdProdutos(String nomeProduto) {
-		return this.produtos.get(nomeProduto).getQntd();
+		for (int i = 0; i < this.produtos.size(); i++) {
+			if (this.produtos.get(i).getNome().equals(nomeProduto)) {
+				return this.produtos.get(i).getQntd();
+			}
+		}
+
+		return 0;
+	}
+
+	public void ordenarProdutoNome() {
+		Collections.sort(produtos, new ComparatorProduto(ComparatorProduto.NOME));
 	}
 	
+	public void ordenarProdutoPreco() {
+		Collections.sort(produtos, new ComparatorProduto(ComparatorProduto.PRECO));
+	}
+	
+	public void ordenarProdutoValidade() {
+		Collections.sort(produtos, new ComparatorProduto(ComparatorProduto.VALIDADE));
+	}
+	
+	public void ordenarProdutoQntd() {
+		Collections.sort(produtos, new ComparatorProduto(ComparatorProduto.QNTD));
+	}
 
 }

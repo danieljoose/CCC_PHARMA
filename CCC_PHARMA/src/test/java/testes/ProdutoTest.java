@@ -14,7 +14,7 @@ public class ProdutoTest {
 	@Before
 	public void instanciaProduto() {
 		this.produto = new Produto("doril", "111", "CCC Botica", Situacao.DISPONIVEL,
-				Categoria.MEDICAMENTOS, (float) 10.50, 22, 12, 2018, 10);
+				Categoria.MEDICAMENTOS, (double) 10.50, 22, 12, 2018, 10);
 	}
 	
 	@Test

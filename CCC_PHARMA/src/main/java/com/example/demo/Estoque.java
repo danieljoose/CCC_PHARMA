@@ -8,11 +8,13 @@ public class Estoque {
 	ArrayList<Produto> produtos;
 	ArrayList<Produto> produtosEmFalta;
 	ArrayList<Produto> produtosVencidos;
+	ArrayList<Produto> produtosVendidos;
 
 	public Estoque() {
 		produtos = new ArrayList<>();
 		produtosEmFalta = new ArrayList<>();
 		produtosVencidos = new ArrayList<>();
+		produtosVendidos = new ArrayList<>();
 	}
 
 	public void addProduto(Produto produto) {
@@ -88,10 +90,28 @@ public class Estoque {
 				return this.produtos.get(i).getQntd();
 			}
 		}
-
 		return 0;
 	}
-
+	
+	public void descontoEmCategoria(Categoria categoria,int desconto) {
+		for(int i = 0; i < produtos.size(); i++) {
+			if(produtos.get(i).getCategoria().equals(categoria)) {
+				double precoDoDesconto = produtos.get(i).getPreco()*desconto;
+				produtos.get(i).setPreco(produtos.get(i).getPreco() - precoDoDesconto);
+			}
+		}
+	}
+	
+	// Metodo nao esta pronto, falta terminar 
+	public String relatorioGeral() {
+		String saida = "";
+		for(int i = 0; i < produtos.size(); i++) {
+			saida += "(" + i + ") " + produtos.get(i).toString()+".\n";
+		}
+		return saida;
+	}
+	
+	
 	public void ordenarProdutoNome() {
 		Collections.sort(produtos, new ComparatorProduto(ComparatorProduto.NOME));
 	}
@@ -108,4 +128,5 @@ public class Estoque {
 		Collections.sort(produtos, new ComparatorProduto(ComparatorProduto.QNTD));
 	}
 
+	
 }

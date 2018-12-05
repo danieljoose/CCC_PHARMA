@@ -16,8 +16,11 @@ public class Sistema {
 
 	}
 
-	public String cadastrarCliente() {
-		Cliente cliente = new Cliente();
+	public String cadastrarCliente(String nome, String cpf, String email, String telefone) {
+		
+		boolean logado = true;
+		Cliente cliente = new Cliente(nome, logado, cpf, email, telefone);
+		
 		if (usuarios.contains(cliente)) {
 			throw new IllegalArgumentException("Cliente já cadastrado");
 		} else {
@@ -26,8 +29,11 @@ public class Sistema {
 		}
 	}
 
-	public String cadastrarAdministrador() {
-		Administrador adm = new Administrador();
+	public String cadastrarAdministrador(String nome) {
+		
+		boolean logado = true;
+		Administrador adm = new Administrador(nome,logado);
+		
 		if (usuarios.contains(adm)) {
 			throw new IllegalArgumentException("Administrador já cadastrado");
 		} else {
@@ -35,10 +41,11 @@ public class Sistema {
 			return "Administrador cadastrado com sucesso!";
 		}
 	}
+	
+	/* 
+	
+	public String validarLogin() {   // FALTA TERMINAR
 
-
-	public String validarLogin() {
-
-	}
+	} */
 
 }

@@ -9,7 +9,7 @@ public class Produto {
 	private String fabricante;
 	private Situacao situacao;
 	private Categoria categoria;
-	private float preco;
+	private Double preco;
 	private Date validade;
 	private String lote;
 	private int qntd;
@@ -32,7 +32,7 @@ public class Produto {
 		this.fabricante = fabricante;
 		this.situacao = situacao;
 		this.categoria = categoria;
-		this.preco = preco;
+		this.preco = (double) preco;
 		this.validade = new Date(validadeAno - 1900, validadeMes - 1, validadeDia);
 		this.lote = "";
 		this.qntd = qntd;
@@ -47,8 +47,8 @@ public class Produto {
 		return this.categoria;
 	}
 	
-	public void setPreco(float preco) {
-		this.preco = preco;
+	public void setPreco(Double preco2) {
+		this.preco = preco2;
 	}
 
 	
@@ -80,7 +80,7 @@ public class Produto {
 		return this.nome;
 	}
 	
-	public float getPreco() {
+	public Double getPreco() {
 		return this.preco;
 	}
 	

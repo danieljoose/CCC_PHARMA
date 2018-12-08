@@ -31,7 +31,7 @@ public class Estoque {
 			for (int i = 0; i < this.produtos.size(); i++) {
 				if (this.produtos.get(i).getNome().equals(nomeProduto)) {
 					String nome = this.produtos.get(i).getNome();
-					Double preco = this.produtos.get(i).getPreco();
+					Double preco = (double) this.produtos.get(i).getPreco();
 					int qntd = this.produtos.get(i).getQntd();
 
 					retorno = nome + " - " + preco + " - " + qntd;

@@ -50,7 +50,15 @@ public class Produto {
 	public void setPreco(float preco) {
 		this.preco = preco;
 	}
+
 	
+	
+	
+	@Override
+	public String toString() {
+		return ("Nome do Produto: " + this.nome + "Quantidade: " + this.qntd + "."); // FALTA TERMINAR AQUI
+	}
+
 	public int getQntd() {
 		return this.qntd;
 	}

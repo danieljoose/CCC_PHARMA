@@ -14,6 +14,9 @@ public class Administrador {
 	@Id
 	@Column(name = "cpf")
 	private String cpf;
+	
+	@Column(name = "password")
+	private String password;
 
 	@Column(name = "nome")
 	private String nome;
@@ -23,19 +26,27 @@ public class Administrador {
 
 	@Column(name = "telefone")
 	private String telefone;
+	
+	 @Column(name = "admin")
+	 @NotEmpty
+	 private boolean admin;
 
 	public Administrador() {
 	}
 
 	public Administrador(
 			@NotEmpty(message = "'cpf' field may not be empty") @NotNull(message = "'cpf' field may not be null") String cpf,
+			@NotEmpty(message = "'password' field may not be empty") @NotNull(message = "'password' field may not be null") String password,
 			@NotEmpty(message = "'nome' field may not be empty") @NotNull(message = "'nome' field may not be null") String nome,
 			@NotEmpty(message = "'email' field may not be empty") @NotNull(message = "'email' field may not be null") String email,
-			@NotEmpty(message = "'telefone' field may not be empty") @NotNull(message = "'telefone' field may not be null") String telefone) {
+			@NotEmpty(message = "'telefone' field may not be empty") @NotNull(message = "'telefone' field may not be null") String telefone,
+			boolean admin) {
 		this.cpf = cpf;
+		this.password = password;
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
+		this.admin = admin;
 	}
 
 	public String getCpf() {
@@ -45,6 +56,14 @@ public class Administrador {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getNome() {
 		return nome;
@@ -52,6 +71,10 @@ public class Administrador {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public boolean isAdmin() {
+		return true;
 	}
 
 	public String getEmail() {

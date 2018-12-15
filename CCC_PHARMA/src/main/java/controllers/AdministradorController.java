@@ -1,5 +1,6 @@
 package controllers;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,5 @@ public class AdministradorController {
 	public Administrador getAdminByNome(@PathVariable("nome") String nome) {
 		return adminService.findByNome(nome);
 	}
+		
 }

@@ -1,19 +1,13 @@
 package services;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import exception.RegisterNotFoundException;
 import models.Cliente;
 import repository.ClienteRepository;
 
 @Service
 public class ClienteService {
-
-	private final String errorMessage = "Cliente não está cadastrado.";
 
 	@Autowired
 	private ClienteRepository clienteRepository;
@@ -29,23 +23,16 @@ public class ClienteService {
 
 	public Cliente findByCpf(String cpf) {
 
-		Optional<Cliente> optCliente = clienteRepository.findByCpf(cpf);
-
-		if (!optCliente.isPresent()) {
-			throw new RegisterNotFoundException(errorMessage);
-		}
-
-		return optCliente.get();
+		return this.clienteRepository.findByCpf(cpf);
 	}
-	
+
 	public Cliente findByNome(String nome) {
 
-		Optional<Cliente> optCliente = clienteRepository.findByNome(nome);
+		return this.clienteRepository.findByNome(nome);
+	}
 
-		if (!optCliente.isPresent()) {
-			throw new RegisterNotFoundException(errorMessage);
-		}
-
-		return optCliente.get();
+	public void saveUser(Cliente cliente) {
+		cliente.setAdmin(false);
+		this.save(cliente);
 	}
 }

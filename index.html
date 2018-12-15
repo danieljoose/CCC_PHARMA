@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<!-- Domingos Gabriel -->
+<html lang="pt">
   <head>
     <!-- Required meta tags --> <!-- ISSO AQUI TA PRONTO -->
     <meta charset="utf-8">
@@ -20,11 +21,14 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <img src="imagens/logo.png" width="200 px"> </img> <!-- LOGO -->
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0"> <!-- LINKS -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Produtos<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="#" onclick="smoothScroll(document.getElementById('produtos'))" >Produtos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contatos</a>
+        <a class="nav-link" href="#" onclick="smoothScroll(document.getElementById('cadastrese'))">Cadastre-se</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" onclick="smoothScroll(document.getElementById('contatos'))">Contatos</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -34,7 +38,7 @@
       <!-- LOGIN/SENHA -->
       <select class="form-control">
         <option>Usuário</option>
-        <option>Admininastor</option>
+        <option>Administrador</option>
       </select>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Entrar</button> <!-- BOTAO -->
 
@@ -46,13 +50,13 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="https://instagram.fcpv3-1.fna.fbcdn.net/vp/af78f2b03443d27564f4ca2d827d8f33/5CABCB7C/t51.2885-15/e35/31557151_164225004417251_1693110459231633408_n.jpg" alt="First slide">
+      <img class="d-block w-100" src="imagens/slide1.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://instagram.fcpv3-1.fna.fbcdn.net/vp/af78f2b03443d27564f4ca2d827d8f33/5CABCB7C/t51.2885-15/e35/31557151_164225004417251_1693110459231633408_n.jpg" alt="Second slide">
+      <img class="d-block w-100" src="imagens/slide2.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://instagram.fcpv3-1.fna.fbcdn.net/vp/af78f2b03443d27564f4ca2d827d8f33/5CABCB7C/t51.2885-15/e35/31557151_164225004417251_1693110459231633408_n.jpg" alt="Third slide">
+      <img class="d-block w-100" src="imagens/slide3.jpg" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -65,10 +69,240 @@
   </a>
 </div>
 
+ <!-- TABELA PRIMEIRA LINHA -->
+<table class="table second" id="produtos">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Código</th>
+      <th scope="col">Produto</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Adicionar ao Carrinho</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <!-- RESTANTE DAS LINHAS -->
+    <tr>
+      <th id="quantidade" scope="row">25</th>
+      <td>655651</td>
+      <td>The Bird</td>
+      <td>R$ 10,00 </td>
+      
+      <!-- FERRAMENTA DE ADD E REMOVER -->
+      <td><button id="botaoadicionar" type="button" class="btn btn-success">Adicionar</button> 
+
+          <button id="botaocontador" type="button" class="btn btn-outline-secondary" disabled="">0</button> <!-- CONTADOR -->
+
+          <button id="botaoremover" type="button" class="btn btn-danger">Remover</button>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/>
+
+<!-- ORDENAR POR -->
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Ordenar por
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Nome</a>
+    <a class="dropdown-item" href="#">Preço</a>
+    <a class="dropdown-item" href="#">Data</a>
+    <a class="dropdown-item" href="#">Categoria</a>
+  </div>
+  <!-- COMPRAR TUDO -->
+  <button id="comprartudo" type="button" class="btn btn-success">Comprar tudo!</button>
+</div>
+
+
+
+
+<!-- CADASTRE-SE -->
+<h1><span class="badge badge-secondary" id="cadastrese">Cadastre-se!</span></h1>
+<br/><br/>
+<form class="needs-validation" novalidate>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom01">Nome</label>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="Nome" value="Insira o nome" required>
+      <div class="valid-feedback">
+        Parece bom!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Sobrenome</label>
+      <input type="text" class="form-control" id="validationCustom02" placeholder="Sobrenome" value="Insira o sobrenome" required>
+      <div class="valid-feedback">
+        Parece bom!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustomUsername">Login</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+        </div>
+        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Insira o login" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Por favor, escolha um nome de usuário.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom03">Cidade</label>
+      <input type="text" class="form-control" id="validationCustom03" placeholder="Insira a cidade" required>
+      <div class="invalid-feedback">
+        Por favor, forneça uma cidade válida.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom04">Estado</label>
+      <input type="text" class="form-control" id="validationCustom04" placeholder="Insira o estado" required>
+      <div class="invalid-feedback">
+        Por favor, forneça um estado válido.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom05">CEP</label>
+      <input type="text" class="form-control" id="validationCustom05" placeholder="Insira o CEP" required>
+      <div class="invalid-feedback">
+        Por favor, forneça um CEP válido.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Aceito os termos do contrato.
+      </label>
+      <div class="invalid-feedback">
+        Você deve concordar antes de enviar!
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Enviar</button>
+</form>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<!-- CONTATOS -->
+<h1><span class="badge badge-secondary" id="contatos">Contatos</span></h1>
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">E-mail</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@exemplo.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Assunto</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Reclamações</option>
+      <option>Sugestões</option>
+      <option>Dúvidas</option>
+      <option>Estorno de Pagamento</option>
+      <option>Outros</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Mensagem</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+</form>
+<button id="enviar" type="button" class="btn btn-success">Enviar</button>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/>
+
+<!-- SCRIPT DO CADASTRE-SE -->
+<script>
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    var forms = document.getElementsByClassName('needs-validation');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+
+</script>
+
+    <script>
+      //FERRAMENTAS
+      window.smoothScroll = function(target) {
+    var scrollContainer = target;
+    do { 
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+
+    var targetY = 0;
+    do { 
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+
+    scroll = function(c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 30 * i;
+        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+    }
+  
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+     
+      var botaoadicionar = document.getElementById("botaoadicionar");
+      var botaocontador = document.getElementById("botaocontador");
+      var botaoremover = document.getElementById("botaoremover");
+      var quantidade = document.getElementById("quantidade");
+      var comprartudo = document.getElementById("comprartudo");
+      var enviar = document.getElementById("enviar");
+
+      
+
+      botaoadicionar.addEventListener('click', function(){
+        //isso garante que o contador vai contar ate a quantidade de produtos disponivel
+        if (quantidade.innerHTML > 0) {
+        botaocontador.innerHTML++;
+        quantidade.innerHTML--;}
+      })
+
+      botaoremover.addEventListener('click', function(){
+        //isso verifica se o contador eh 0, pra nao contar negativo
+        if (botaocontador.innerHTML > 0){
+        botaocontador.innerHTML--;
+        quantidade.innerHTML++;}
+      })
+
+      comprartudo.addEventListener('click', function(){
+        botaocontador.innerHTML = 0;
+      })
+
+      enviar.addEventListener('click', function(){
+        exampleFormControlTextarea1.value = "";
+      })
+
+    </script>
+
 
 	<!-- ISSO AQUI TA PRONTO, NEM TRISQUE -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
   </body>
 </html>

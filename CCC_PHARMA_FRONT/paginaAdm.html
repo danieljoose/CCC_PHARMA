@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- @author Italo Modesto Pereira 116211154 -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Página do Administrador</title>
+	<link rel="stylesheet"  href="css/estilo.css">
+	<link rel="stylesheet"  href="bootstrap/css/bootstrap.min.css">
+	
+
+</head>
+<body>
+	<header class="headerAdm">
+		<a href="index.html">
+			<img src="imagens/logo.png" width="200 px"> </img>
+		</a>
+		<spam class="paginaDoAdm"><strong>PÁGINA DO ADMINISTRADOR</strong></spam>
+		
+	</header>
+	
+	<main>
+		<div class="row">
+			<!-- Sidebar -->
+			<div class="col-md-2 <menu></menu>">
+				<button class="botoesMenuAdm btn btn-primary" id="addProduto">
+					Adicionar Produto
+				</button>
+
+				<button class="botoesMenuAdm btn btn-primary" id="dispE_Preco">
+					Disponibilidade e Preço
+				</button>
+
+				<button class="botoesMenuAdm btn btn-primary" id="atribuirPreco">
+					Atribuir Preço
+				</button>
+
+				<button class="botoesMenuAdm btn btn-primary" id="criarLotes">
+					Criar Lotes
+				</button>
+
+				<button class="botoesMenuAdm btn btn-primary" id="ordenarProdutos">
+					Ordenar Produtos
+				</button>
+
+				<button class="botoesMenuAdm btn btn-primary" id="atribuirDescontos">
+					Atribuir Descontos
+				</button>
+
+				<button class="botoesMenuAdm btn btn-primary" id="relatorioGeral">
+					Relatório Geral
+				</button>
+			</div>
+
+			<!-- Content -->
+			<div class="col-md-9 marcador">
+				content content content content content content content content content content content content 
+				<div id="all">
+					<div class="conteudoContent" id="c1">C1</div>
+					<div class="conteudoContent" id="c2">C2</div>
+					<div class="conteudoContent" id="c3">C3</div>
+					<div class="conteudoContent" id="c4">C4</div>
+					<div class="conteudoContent" id="c5">C5</div>
+					<div class="conteudoContent" id="c6">C6</div>
+					<div class="conteudoContent" id="c7">C7</div>
+				</div>
+
+				<!-- <script type="text/javascript" src="js/javascript.js"></script> -->
+				
+				<script >
+					function tableshowhide(a, b, c){
+
+						len = menu.childElementCount;
+
+						closeAll();
+
+						for(i = 0; i < len; i++){
+							menu.children[i].onclick=function(){
+								closeAll();
+								all.children[this.id].style.display="block";
+							}
+						}
+
+						function closeAll(){
+							for(i = 0; i < all.childElementCount; i++){
+								all.children[i].style.display="none";
+							}
+						}
+
+						menu.children[c].click();
+					}
+
+					tableshowhide("menu", "all", "c1");
+
+
+				</script>
+
+			
+
+
+			</div>
+		</div>	
+
+	</main>
+
+	<footer class="marcador">
+		footer
+	</footer>
+</body>
+</html>
